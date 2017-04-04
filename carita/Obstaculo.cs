@@ -8,15 +8,5 @@ namespace carita
         {
 
         }
-
-        public override void Movement(ConsoleKeyInfo flecha)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Movement()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

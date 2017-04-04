@@ -10,12 +10,7 @@ namespace carita
 
         }
 
-        public override void Movement()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Movement(ConsoleKeyInfo flecha)
+        public void Movement(ConsoleKeyInfo flecha)
         {
             flecha = Console.ReadKey();
 

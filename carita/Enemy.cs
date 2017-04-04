@@ -19,7 +19,7 @@ namespace carita
             DerIzq = rnd.Next(2);
         }
 
-        public override void Movement()
+        public void Movement()
         {
 
             if (y >= Console.WindowHeight - 1)
@@ -43,11 +43,6 @@ namespace carita
                 x++;
             else
                 x--;
-        }
-
-        public override void Movement(ConsoleKeyInfo flecha)
-        {
-            throw new NotImplementedException();
         }
     }
 }

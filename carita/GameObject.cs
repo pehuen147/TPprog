@@ -62,9 +62,6 @@ namespace carita
             return icon;
         }
 
-        public abstract void Movement(ConsoleKeyInfo flecha);
-        public abstract void Movement();
-
         public void Dibujar()
         {
             Console.SetCursorPosition(x, y);
