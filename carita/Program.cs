@@ -48,6 +48,43 @@ namespace carita
 
         }
 
+        static void Menu(ref bool _inGame)
+        {
+            ConsoleKeyInfo salir = new ConsoleKeyInfo();
+            int cont = (Console.WindowHeight - 9) / 2;
+            Console.SetCursorPosition((Console.WindowWidth - 52) / 2, cont++);
+            Console.WriteLine("  ▀█ █  █ ▄▀▀▀ ▄▀▀▄ █▀▀▄     █▀▀▀ █▄ █ ▀█▀ █▀▀▀ █▀▀▄");
+            Console.SetCursorPosition((Console.WindowWidth - 52) / 2, cont++);
+            Console.WriteLine("▄  █ █  █ █ ▀█ █▄▄█ █▄▄▀ ▀▀▀ █▀▀▀ █ ▀█  █  █▀▀▀ █▄▄▀");
+            Console.SetCursorPosition((Console.WindowWidth - 52) / 2, cont++);
+            Console.WriteLine(" ▀▀   ▀▀   ▀▀▀ ▀  ▀ ▀  ▀ ▀▀▀ ▀▀▀▀ ▀  ▀  ▀  ▀▀▀▀ ▀  ▀");
+            Console.SetCursorPosition((Console.WindowWidth - 52) / 2, cont++);
+            Console.WriteLine("                               ");
+            Console.SetCursorPosition((Console.WindowWidth - 57) / 2, cont++);
+            Console.WriteLine("▄▀▀▀ ▄▀▀▄ █    ▀█▀ █▀▀▄     █▀▀▀ ▄▀▀▀ ▄▀▀▀ ▄▀▀▄ █▀▀▄ █▀▀▀");
+            Console.SetCursorPosition((Console.WindowWidth - 57) / 2, cont++);
+            Console.WriteLine(" ▀▀▄ █▄▄█ █     █  █▄▄▀ ▀▀▀ █▀▀▀  ▀▀▄ █    █▄▄█ █▄▄▀ █▀▀▀");
+            Console.SetCursorPosition((Console.WindowWidth - 57) / 2, cont++);
+            Console.WriteLine("▀▀▀  ▀  ▀ ▀▀▀▀ ▀▀▀ ▀  ▀ ▀▀▀ ▀▀▀▀ ▀▀▀   ▀▀▀ ▀  ▀ ▀    ▀▀▀▀");
+            Console.SetCursorPosition(0, 0);
+
+            do
+            {
+                salir = Console.ReadKey();
+
+                switch (salir.Key)
+                {
+                    case ConsoleKey.Escape:
+                        _inGame = false;
+                        break;
+                    case ConsoleKey.Enter:
+                        _inGame = true;
+                        break;
+                }
+
+            } while (salir.Key != ConsoleKey.Enter && salir.Key != ConsoleKey.Escape);
+        }
+
         static void Dibujar(Player _player , Obstaculo[] _obstaculos, GameObject[] _enemys)
         {
             _player.Dibujar();
@@ -90,16 +127,16 @@ namespace carita
         static void Main(string[] args)
         {
             bool inGame = true;
-            
+            Menu(ref inGame);
             while (inGame)
             {
                 Random rnd = new Random();
 
                 ConsoleKeyInfo flecha = new ConsoleKeyInfo();
-                Player player = new Player(Console.WindowWidth / 2, Console.WindowHeight / 2, '♫');
+                Player player = new Player(Console.WindowWidth / 2, Console.WindowHeight / 2, '█');
 
                 Obstaculo[] obstaculos = new Obstaculo[10];
-                Enemy[] enemys = new Enemy[10];
+                Enemy[] enemys = new Enemy[20];
 
                 for (int i = 0; i < enemys.Length; i++)
                 {
@@ -108,7 +145,7 @@ namespace carita
 
                 for (int i = 0; i < obstaculos.Length; i++)
                 {
-                    obstaculos[i] = new Obstaculo(rnd.Next(0, Console.WindowWidth-1), rnd.Next(0, Console.WindowHeight-1), '█');
+                    obstaculos[i] = new Obstaculo(rnd.Next(0, Console.WindowWidth-1), rnd.Next(0, Console.WindowHeight-1), '▒');
                 }
                 
                 while (inGame)
@@ -130,6 +167,7 @@ namespace carita
                     Console.Clear();
                 }
                 GameOver(ref inGame);
+                
             }
         }
     }
