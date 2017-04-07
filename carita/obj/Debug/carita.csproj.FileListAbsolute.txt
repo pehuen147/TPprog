@@ -22,3 +22,9 @@ C:\Users\822\Desktop\Nueva carpeta\TPprog\carita\obj\Debug\carita.pdb
 C:\Users\822\Desktop\Nueva carpeta\TPprog\carita\bin\Debug\carita.exe
 C:\Users\822\Desktop\Nueva carpeta\TPprog\carita\bin\Debug\carita.pdb
 C:\Users\822\Desktop\Nueva carpeta\TPprog\carita\obj\Debug\carita.csprojResolveAssemblyReference.cache
+C:\Users\12\Desktop\TPprog\carita\bin\Debug\carita.exe.config
+C:\Users\12\Desktop\TPprog\carita\obj\Debug\carita.exe
+C:\Users\12\Desktop\TPprog\carita\obj\Debug\carita.pdb
+C:\Users\12\Desktop\TPprog\carita\bin\Debug\carita.exe
+C:\Users\12\Desktop\TPprog\carita\bin\Debug\carita.pdb
+C:\Users\12\Desktop\TPprog\carita\obj\Debug\carita.csprojResolveAssemblyReference.cache
