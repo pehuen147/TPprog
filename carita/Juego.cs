@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Threading;
+using System.Net;   
+using System.IO;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace carita
 {
@@ -153,8 +157,41 @@ namespace carita
             }
         }
 
+        static void ClimaActual()
+        {
+            WebRequest req = WebRequest.Create("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22buenos%20aires%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys");
+
+            WebResponse respuesta = req.GetResponse();
+
+            Stream stream = respuesta.GetResponseStream();
+
+            StreamReader sr = new StreamReader(stream);
+
+            JObject data = JObject.Parse(sr.ReadToEnd());
+
+            string clima = (string)data["query"]["results"]["channel"]["item"]["condition"]["text"];
+
+            switch (clima)
+            {
+                case "Cloudy":
+                    Console.BackgroundColor = ConsoleColor.DarkGray;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    break;
+                case "Sunny":
+                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    break;
+                default:
+                    Console.BackgroundColor = ConsoleColor.Magenta;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    break;
+            }
+        }
+
         public void Play()
         {
+            ClimaActual();
+
             bool inGame = true;
             Menu(ref inGame);
             if(!multiplayer)
